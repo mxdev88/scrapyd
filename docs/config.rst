@@ -156,8 +156,10 @@ jobstorage
 -------
 
 A class that stores finished jobs. There are 2 implementations provided:
+
 * ``MemoryJobStorage`` (default) jobs are stored and memory and lost when the daemon is restarted
 * ``SqliteJobStorage`` jobs are persisted in a Sqlite database in ``dbs_dir``
+
 If another backend is needed, one can implement its own class by implementing the IJobStorage 
 interface.
 
