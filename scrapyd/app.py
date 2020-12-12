@@ -9,7 +9,13 @@ from twisted.web.guard import HTTPAuthSessionWrapper, BasicCredentialFactory
 
 from scrapy.utils.misc import load_object
 
+<<<<<<< HEAD
 from .interfaces import IEggStorage, IPoller, ISpiderScheduler, IEnvironment
+=======
+from .interfaces import IEggStorage, IJobStorage, IPoller, ISpiderScheduler, IEnvironment
+from .eggstorage import FilesystemEggStorage
+from .jobstorage import MemoryJobStorage
+>>>>>>> persist-jobs
 from .scheduler import SpiderScheduler
 from .poller import QueuePoller
 from .environ import Environment
@@ -33,6 +39,10 @@ def application(config):
     eggstorage = config.get('eggstorage', 'scrapyd.eggstorage.FilesystemEggStorage')
     eggstoragecls = load_object(eggstorage)
     app.setComponent(IEggStorage, eggstoragecls(config))
+
+    jspath = config.get('jobstorage', 'scrapyd.jobstorage.MemoryJobStorage')
+    jscls = load_object(jspath)
+    app.setComponent(IJobStorage, jscls(config))
 
     laupath = config.get('launcher', 'scrapyd.launcher.Launcher')
     laucls = load_object(laupath)
