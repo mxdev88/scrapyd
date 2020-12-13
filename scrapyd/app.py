@@ -9,13 +9,9 @@ from twisted.web.guard import HTTPAuthSessionWrapper, BasicCredentialFactory
 
 from scrapy.utils.misc import load_object
 
-<<<<<<< HEAD
-from .interfaces import IEggStorage, IPoller, ISpiderScheduler, IEnvironment
-=======
 from .interfaces import IEggStorage, IJobStorage, IPoller, ISpiderScheduler, IEnvironment
-from .eggstorage import FilesystemEggStorage
 from .jobstorage import MemoryJobStorage
->>>>>>> persist-jobs
+
 from .scheduler import SpiderScheduler
 from .poller import QueuePoller
 from .environ import Environment
